@@ -1,0 +1,47 @@
+#アイテム登録
+Items:
+  #魔法使い
+  wild_armor_trim_smithing_template:
+    Type: Plugin
+    CT: 30
+  stick:
+    Type: Plugin
+    CT: 180
+  #忍者
+  amethyst_shard:
+    Type: Command
+    CT: 20
+  purple_dye:
+    Type: Command
+    CT: 200
+
+    #狩人
+  archer_pottery_sherd:
+    Type: Command
+    CT: 12
+  quartz:
+    Type: Command
+    CT: 120
+
+  #影の使者
+  heart_of_the_sea:
+    Type: Command
+    CT: 30
+  tide_armor_trim_smithing_template:
+    Type: Command
+    CT: 220
+
+  #黄昏
+  COMPASS:
+    Type: Plugin
+    CT: 20
+  GLOWSTONE_DUST:
+    Type: Plugin
+    CT: 120
+  #薬屋
+  BLAZE_POWDER:
+    Type: Plugin
+    CT: 20
+  DRAGON_BREATH:
+    Type: Plugin
+    CT: 120
