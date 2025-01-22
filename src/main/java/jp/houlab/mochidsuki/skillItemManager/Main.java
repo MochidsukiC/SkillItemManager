@@ -12,6 +12,7 @@ public final class Main extends JavaPlugin {
         // Plugin startup logic
         saveDefaultConfig();
         config = getConfig();
+        getServer().getPluginManager().registerEvents(new ItemUsingListener(), this);
     }
 
     @Override
