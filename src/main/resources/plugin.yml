@@ -2,3 +2,5 @@ name: SkillItemManager
 version: '1.0-SNAPSHOT'
 main: jp.houlab.mochidsuki.skillItemManager.Main
 api-version: '1.20'
+
+softdepend: [Pharmacy, Tasogare,TAD_Character_Engineer_2, TAD_Character_Wizard, character]

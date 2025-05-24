@@ -7,29 +7,52 @@ Items:
   stick:
     Type: Plugin
     CT: 180
-  #忍者
-  amethyst_shard:
-    Type: Command
+  #技術者
+  DUNE_ARMOR_TRIM_SMITHING_TEMPLATE:
+    Type: Plugin
     CT: 20
+  stone_button:
+    Type: Plugin
+    CT: 120
+  #忍者
   purple_dye:
     Type: Command
+    CT: 20
+    ScoreBoard: ninja_skill1
+  amethyst_shard:
+    Type: Command
     CT: 200
+    ScoreBoard: ninja_skill2
 
-    #狩人
+  #影の使者
+  firework_star:
+    Type: Command
+    CT: 15
+    ScoreBoard: shadow_skill1
+  ender_eye:
+    Type: Command
+    CT: 180
+    ScoreBoard: shadow_skill2
+
+  #狩人
   archer_pottery_sherd:
     Type: Command
     CT: 12
+    ScoreBoard: hunter_skill1
   quartz:
     Type: Command
     CT: 120
+    ScoreBoard: hunter_skill2
 
-  #影の使者
+  #延命の騎士
   heart_of_the_sea:
     Type: Command
     CT: 30
+    ScoreBoard: life_knight_skill1
   tide_armor_trim_smithing_template:
     Type: Command
     CT: 220
+    ScoreBoard: life_knight_skill2
 
   #黄昏
   COMPASS:
@@ -45,3 +68,22 @@ Items:
   DRAGON_BREATH:
     Type: Plugin
     CT: 120
+  #ブレンダー
+  ECHO_SHARD:
+    Type: Plugin
+    CT: 20
+  MUSIC_DISC_5:
+    Type: Plugin
+    CT: 100
+
+  #風の又三郎
+  FEATHER:
+    Type: Plugin
+    CT: 15
+  IRON_SWORD:
+    Type: Plugin
+    CT: 90
+
+#アイテムの使用可能可否
+ItemUsing: false
+#trueの時アイテムは使用できなくなり、falseの時は使用できる
