@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
@@ -18,7 +19,7 @@ import static jp.houlab.mochidsuki.skillItemManager.Main.plugin;
 public class ItemUsingListener implements Listener {
     @EventHandler
     public void onItemUse(PlayerInteractEvent event) {
-        if (event.getAction() != Action.PHYSICAL){
+        if (event.getAction().isRightClick()){
             boolean b = trigger(event.getPlayer());
             if(b) event.setCancelled(b);
         }
@@ -60,5 +61,17 @@ public class ItemUsingListener implements Listener {
                 event.getPlayer().setCooldown(material, event.getPlayer().getCooldown(material));
             }
         },1);
+    }
+
+    @EventHandler
+    public void PlayerDropItemEvent(PlayerDropItemEvent event){
+        Set<String> strings = config.getConfigurationSection("Items").getKeys(false);
+        for (String name : strings) {
+            Material material = Material.matchMaterial(name);
+            if (event.getItemDrop().getItemStack().getType().equals(material)) {
+                event.setCancelled(true);
+                return;
+            }
+        }
     }
 }
