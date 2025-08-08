@@ -7,18 +7,20 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Set;
 
 import static jp.houlab.mochidsuki.skillItemManager.Main.config;
+import static jp.houlab.mochidsuki.skillItemManager.Main.plugin;
 
 public class ItemUsingListener implements Listener {
     @EventHandler
     public void onItemUse(PlayerInteractEvent event) {
         if (event.getAction() != Action.PHYSICAL){
             boolean b = trigger(event.getPlayer());
-            event.setCancelled(b);
+            if(b) event.setCancelled(b);
         }
     }
 
@@ -37,7 +39,7 @@ public class ItemUsingListener implements Listener {
         for (String name : strings){
             Material material = Material.matchMaterial(name);
             if(item.getType().equals(material)){
-                if(player.getCooldown(material) <= 0) {
+                if(player.getCooldown(material) <= 0&&!player.getScoreboardTags().contains(config.getString("Items." +  name + ".RestraintTag","ResistantSkill"))) {
                     if (config.getString("Items." + name + ".Type").equalsIgnoreCase("command")) {
                         player.getScoreboard().getObjective(config.getString("Items." + name + ".ScoreBoard")).getScore(player.getName()).setScore(1);
                     }
@@ -47,5 +49,16 @@ public class ItemUsingListener implements Listener {
             }
         }
         return b;
+    }
+
+    @EventHandler
+    public void PlayerRespawnEvent(PlayerRespawnEvent event) {
+        plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+            Set<String> strings = config.getConfigurationSection("Items").getKeys(false);
+            for (String name : strings) {
+                Material material = Material.matchMaterial(name);
+                event.getPlayer().setCooldown(material, event.getPlayer().getCooldown(material));
+            }
+        },1);
     }
 }

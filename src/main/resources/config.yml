@@ -43,6 +43,7 @@ Items:
     Type: Command
     CT: 120
     ScoreBoard: hunter_skill2
+    RestraintTag : hunter_skill2_strong
 
   #延命の騎士
   heart_of_the_sea:
